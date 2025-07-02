@@ -53,5 +53,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Persistent data storage
 - Professional embed messages with colors and emojis
 
-[Unreleased]: https://github.com/samuelramos/spy-bot/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/samuelramos/spy-bot/releases/tag/v1.0.0
+[Unreleased]: https://github.com/samuelrms/spy-bot/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/samuelrms/spy-bot/releases/tag/v1.0.0
