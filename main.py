@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import discord
 from dotenv import load_dotenv
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 load_dotenv()
@@ -14,8 +14,8 @@ SALA_EXCLUIDA = os.getenv("SALA_EXCLUIDA")
 # MongoDB Configuration
 MONGODB_URI = os.getenv("MONGODB_URI")
 client = MongoClient(MONGODB_URI, server_api=ServerApi("1"))
-db = client.spy_bot
-user_data_collection = db.user_data
+db = client.spy  # nome do banco
+user_data_collection = db.spy_users  # nome da collection
 
 intents = discord.Intents.default()
 intents.guilds = True
@@ -199,8 +199,9 @@ async def on_ready():
     print("--------------------------------------------------")
 
     # Testa conexão com MongoDB
+    admin_db = MongoClient(MONGODB_URI, server_api=ServerApi("1")).get_database("admin")
     try:
-        client.admin.command("ping")
+        admin_db.command("ping")
         print("✅ Conectado com sucesso ao MongoDB!")
     except Exception as e:
         print(f"❌ Erro ao conectar com MongoDB: {e}")
