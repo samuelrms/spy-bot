@@ -7,105 +7,112 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-Um bot de Discord para monitoramento de presença, status e salas de voz, com notificações bonitas e estatísticas detalhadas para cada usuário!
+A Discord bot for monitoring presence, status, and voice channels with beautiful notifications and detailed statistics for each user!
 
 ---
 
-## ✨ **Funcionalidades**
+## 🌍 **Languages**
 
-### 🎯 **Monitoramento Básico**
-
-- **Notificações automáticas** de entrada, saída e mudança de sala de voz (exceto sala excluída)
-- **Monitoramento de status** (online, ausente, não incomodar, offline)
-- **Detecção de plataforma** (Mobile/Desktop) nas entradas e saídas
-- **Mensagens bonitas** usando embeds e emojis
-- **Persistência de dados** no MongoDB
-
-### 🏆 **Sistema de Rankings e Conquistas**
-
-- **Conquistas automáticas** baseadas em tempo online, voz e atividade
-- **Rankings competitivos** dos membros mais ativos
-- **Notificações de conquistas** quando desbloqueadas
-- **Medalhas e badges** por diferentes tipos de atividade
-
-### 📊 **Comandos Avançados**
-
-- `!stats` — Estatísticas pessoais detalhadas
-- `!top` — Ranking dos 10 mais ativos
-- `!top voz` — Ranking dos que mais usaram voz
-- `!achievements` — Suas conquistas
-- `!compare @user1 @user2` — Comparar usuários
-- `!serverstats` — Estatísticas gerais do servidor
-- `!help` — Lista de comandos
-
-### ⚠️ **Alertas e Lembretes**
-
-- **Alertas de inatividade** para membros ausentes
-- **Notificações automáticas** de usuários inativos
-- **Configuração flexível** de dias para alertas
-
-### 📈 **Relatórios Automáticos**
-
-- **Relatórios semanais** com estatísticas gerais
-- **Top usuários** da semana
-- **Taxa de atividade** do servidor
-- **Conquistas concedidas** no período
-- **Agendamento automático** (domingo às 20h)
+- 🇺🇸 [English](README.md)
+- 🇧🇷 [Português](README-pt-br.md)
 
 ---
 
-## 🚀 **Como instalar**
+## ✨ **Features**
 
-1. **Clone o repositório:**
+### 🎯 **Basic Monitoring**
+
+- **Automatic notifications** for joining, leaving, and changing voice channels (except excluded channel)
+- **Status monitoring** (online, idle, do not disturb, offline)
+- **Platform detection** (Mobile/Desktop) for joins and leaves
+- **Beautiful messages** using embeds and emojis
+- **Data persistence** in MongoDB
+
+### 🏆 **Rankings and Achievements System**
+
+- **Automatic achievements** based on online time, voice activity, and engagement
+- **Competitive rankings** of the most active members
+- **Achievement notifications** when unlocked
+- **Medals and badges** for different types of activity
+
+### 📊 **Advanced Commands**
+
+- `!stats` — Detailed personal statistics
+- `!top` — Ranking of the 10 most active members
+- `!top voice` — Ranking of those who used voice the most
+- `!achievements` — Your achievements
+- `!compare @user1 @user2` — Compare users
+- `!serverstats` — General server statistics
+- `!help` — List of commands
+
+### ⚠️ **Alerts and Reminders**
+
+- **Inactivity alerts** for absent members
+- **Automatic notifications** for inactive users
+- **Flexible configuration** of days for alerts
+
+### 📈 **Automatic Reports**
+
+- **Weekly reports** with general statistics
+- **Top users** of the week
+- **Server activity rate**
+- **Achievements granted** in the period
+- **Automatic scheduling** (Sunday at 8 PM)
+
+---
+
+## 🚀 **How to install**
+
+1. **Clone the repository:**
 
    ```bash
-   git clone <url-do-repositorio>
+   git clone <repository-url>
    cd spy-bot
    ```
 
-2. **Crie o ambiente virtual:**
+2. **Create the virtual environment:**
 
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. **Instale as dependências:**
+3. **Install dependencies:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Configure o arquivo `.env`:**
-   - Copie o exemplo:
+4. **Configure the `.env` file:**
+   - Copy the example:
 
      ```bash
      cp env.example .env
      ```
 
-   - Preencha com seu token do bot, ID do canal de notificações e nome da sala a ser ignorada.
+   - Fill in with your bot token, notification channel ID, and name of the channel to be ignored.
 
-   **⚠️ Importante:** Se você estiver usando `export $(grep -v '^#' .env | xargs)` para carregar as variáveis, certifique-se de que valores com espaços estejam entre aspas no arquivo `.env`:
+   **⚠️ Important:** If you're using `export $(grep -v '^#' .env | xargs)` to load variables, make sure values with spaces are in quotes in the `.env` file:
 
    ```bash
-   # Correto (com aspas)
+   # Correct (with quotes)
    REPORT_TIME="sunday 20:00"
 
-   # Incorreto (sem aspas)
+   # Incorrect (without quotes)
    REPORT_TIME=sunday 20:00
    ```
 
 ---
 
-## ⚙️ **Configuração do `.env`**
+## ⚙️ **`.env` Configuration**
 
 ```
-# Configurações Obrigatórias
-DISCORD_BOT_TOKEN=seu_token_aqui
+# Required Settings
+DISCORD_BOT_TOKEN=your_token_here
 CANAL_DE_NOTIFICACAO_ID=1234567890123456789
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority
 
-# Configurações Opcionais
+# Optional Settings
 SALA_EXCLUIDA=VACA WORK OS BRABO
 CANAL_RELATORIOS_ID=1234567890123456789
 CANAL_ALERTAS_ID=1234567890123456789
@@ -113,56 +120,56 @@ REPORT_TIME=sunday 20:00
 ALERT_INACTIVE_DAYS=7
 ```
 
-### **Configurações Obrigatórias:**
+### **Required Settings:**
 
-- **DISCORD_BOT_TOKEN:** Token do seu bot
-- **CANAL_DE_NOTIFICACAO_ID:** ID do canal onde as notificações serão enviadas
-- **MONGODB_URI:** URI de conexão com o MongoDB
+- **DISCORD_BOT_TOKEN:** Your bot token
+- **CANAL_DE_NOTIFICACAO_ID:** ID of the channel where notifications will be sent
+- **MONGODB_URI:** MongoDB connection URI
 
-### **Configurações Opcionais:**
+### **Optional Settings:**
 
-- **SALA_EXCLUIDA:** Nome da sala de voz que será ignorada pelo monitoramento
-- **CANAL_RELATORIOS_ID:** ID do canal onde os relatórios semanais serão enviados
-- **CANAL_ALERTAS_ID:** ID do canal onde os alertas de inatividade serão enviados
-- **REPORT_TIME:** Horário para envio do relatório semanal (padrão: "sunday 20:00")
-- **ALERT_INACTIVE_DAYS:** Número de dias para considerar um usuário inativo (padrão: 7)
-
----
-
-## 🕹️ **Comandos**
-
-### **Comandos Básicos:**
-
-- `!stats` — Mostra suas estatísticas de tempo em status e salas de voz
-- `!help` — Lista de todos os comandos disponíveis
-
-### **Comandos de Ranking:**
-
-- `!top` — Ranking dos 10 membros com mais tempo online
-- `!top voz` — Ranking dos 10 membros com mais tempo em salas de voz
-
-### **Comandos de Conquistas:**
-
-- `!achievements` — Mostra suas conquistas desbloqueadas
-- `!achievements @usuario` — Mostra conquistas de outro usuário
-
-### **Comandos de Comparação:**
-
-- `!compare @user1 @user2` — Compara estatísticas de dois usuários
-
-### **Comandos de Servidor:**
-
-- `!serverstats` — Estatísticas gerais do servidor
+- **SALA_EXCLUIDA:** Name of the voice channel that will be ignored by monitoring
+- **CANAL_RELATORIOS_ID:** ID of the channel where weekly reports will be sent
+- **CANAL_ALERTAS_ID:** ID of the channel where inactivity alerts will be sent
+- **REPORT_TIME:** Time for sending the weekly report (default: "sunday 20:00")
+- **ALERT_INACTIVE_DAYS:** Number of days to consider a user inactive (default: 7)
 
 ---
 
-## 📦 **Dependências**
+## 🕹️ **Commands**
+
+### **Basic Commands:**
+
+- `!stats` — Shows your statistics of time in status and voice channels
+- `!help` — List of all available commands
+
+### **Ranking Commands:**
+
+- `!top` — Ranking of the 10 members with the most online time
+- `!top voice` — Ranking of the 10 members with the most time in voice channels
+
+### **Achievement Commands:**
+
+- `!achievements` — Shows your unlocked achievements
+- `!achievements @user` — Shows achievements of another user
+
+### **Comparison Commands:**
+
+- `!compare @user1 @user2` — Compares statistics of two users
+
+### **Server Commands:**
+
+- `!serverstats` — General server statistics
+
+---
+
+## 📦 **Dependencies**
 
 - `discord.py`
 - `python-dotenv`
 - `pymongo`
 
-Instale todas com:
+Install all with:
 
 ```bash
 pip install -r requirements.txt
@@ -170,117 +177,117 @@ pip install -r requirements.txt
 
 ---
 
-## 💡 **Exemplo de uso**
+## 💡 **Usage Example**
 
-### **Notificações Automáticas:**
+### **Automatic Notifications:**
 
-- O bot envia mensagens automáticas e bonitas ao entrar/sair/mudar de sala de voz:
-  > ![Exemplo de embed](https://i.imgur.com/2yZbQbA.png)
+- The bot sends automatic and beautiful messages when joining/leaving/changing voice channels:
+  > ![Embed example](https://i.imgur.com/2yZbQbA.png)
 
-### **Estatísticas Pessoais:**
+### **Personal Statistics:**
 
-- Use `!stats` para ver seu tempo online, ausente, em cada sala, etc.:
-  > ![Exemplo de stats](https://i.imgur.com/4yQwQwA.png)
+- Use `!stats` to see your online time, idle time, time in each channel, etc.:
+  > ![Stats example](https://i.imgur.com/4yQwQwA.png)
 
-### **Sistema de Conquistas:**
+### **Achievement System:**
 
-- **⏰ Primeira Hora** — Ficou online por 1 hora
-- **🔥 Dedicado** — Ficou online por 10 horas
-- **👑 Veterano** — Ficou online por 50 horas
-- **🎤 Explorador de Voz** — Passou 1 hora em salas de voz
-- **🎵 Mestre da Voz** — Passou 10 horas em salas de voz
-- **🦋 Borboleta Social** — Visitou 3 salas diferentes
-- **🏠 Explorador de Salas** — Visitou 10 salas diferentes
+- **⏰ First Hour** — Stayed online for 1 hour
+- **🔥 Dedicated** — Stayed online for 10 hours
+- **👑 Veteran** — Stayed online for 50 hours
+- **🎤 Voice Explorer** — Spent 1 hour in voice channels
+- **🎵 Voice Master** — Spent 10 hours in voice channels
+- **🦋 Social Butterfly** — Visited 3 different channels
+- **🏠 Channel Explorer** — Visited 10 different channels
 
-### **Relatórios Semanais:**
+### **Weekly Reports:**
 
-- Enviados automaticamente todo domingo às 20h
-- Incluem top usuários, estatísticas gerais e conquistas da semana
+- Automatically sent every Sunday at 8 PM
+- Include top users, general statistics, and weekly achievements
 
 ---
 
-## 🛡️ **Segurança**
+## 🛡️ **Security**
 
-- Nunca compartilhe seu `.env`!
-- O arquivo `.env` e dados sensíveis estão no `.gitignore`.
+- Never share your `.env`!
+- The `.env` file and sensitive data are in `.gitignore`.
 
 ---
 
 ## 🔧 **Troubleshooting**
 
-### **Problema com variáveis de ambiente:**
+### **Environment variables problem:**
 
-Se você receber erro `export: not an identifier` ao carregar o `.env`, é porque alguma variável contém espaços. Soluções:
+If you get the error `export: not an identifier` when loading `.env`, it's because some variable contains spaces. Solutions:
 
-1. **Use aspas no arquivo `.env`:**
+1. **Use quotes in the `.env` file:**
 
    ```bash
    REPORT_TIME="sunday 20:00"
    ```
 
-2. **Ou use o python-dotenv (recomendado):**
+2. **Or use python-dotenv (recommended):**
 
    ```python
    from dotenv import load_dotenv
    load_dotenv()
    ```
 
-3. **Ou carregue manualmente:**
+3. **Or load manually:**
 
    ```bash
    source .env
    ```
 
-### **Bot não responde aos comandos:**
+### **Bot doesn't respond to commands:**
 
-- Verifique se o bot tem permissão para ler mensagens
-- Confirme se o `MESSAGE_CONTENT_INTENT` está habilitado no Discord Developer Portal
+- Check if the bot has permission to read messages
+- Confirm that `MESSAGE_CONTENT_INTENT` is enabled in the Discord Developer Portal
 
-### **Relatórios não são enviados:**
+### **Reports are not sent:**
 
-- Verifique se `CANAL_RELATORIOS_ID` está configurado corretamente
-- Confirme se o bot tem permissão para enviar mensagens no canal
-
----
-
-## 👨‍💻 **Contribuição**
-
-Pull requests são bem-vindos! Sinta-se à vontade para sugerir melhorias ou reportar bugs.
+- Check if `CANAL_RELATORIOS_ID` is configured correctly
+- Confirm that the bot has permission to send messages in the channel
 
 ---
 
-## 🛠️ **Desenvolvimento**
+## 👨‍💻 **Contribution**
+
+Pull requests are welcome! Feel free to suggest improvements or report bugs.
+
+---
+
+## 🛠️ **Development**
 
 ### **Pre-commit Hooks**
 
-O projeto usa pre-commit hooks para garantir qualidade do código:
+The project uses pre-commit hooks to ensure code quality:
 
 ```bash
-# Instalar pre-commit
+# Install pre-commit
 pip install pre-commit
 pre-commit install
 
-# Executar manualmente
+# Run manually
 pre-commit run --all-files
 ```
 
-### **Formatação e Linting**
+### **Formatting and Linting**
 
 ```bash
-# Formatar código com Black
+# Format code with Black
 black .
 
-# Organizar imports com isort
+# Organize imports with isort
 isort .
 
-# Verificar com flake8
+# Check with flake8
 flake8 .
 ```
 
-### **Versionamento e Releases**
+### **Versioning and Releases**
 
 ```bash
-# Criar novo release (patch, minor, major)
+# Create new release (patch, minor, major)
 python scripts/release.py patch
 python scripts/release.py minor
 python scripts/release.py major
@@ -288,13 +295,13 @@ python scripts/release.py major
 
 ### **CI/CD**
 
-- ✅ **GitHub Actions** para testes automatizados
-- ✅ **Dependabot** para atualizações de dependências
-- ✅ **Pre-commit hooks** para qualidade de código
-- ✅ **Security scanning** com Bandit
+- ✅ **GitHub Actions** for automated testing
+- ✅ **Dependabot** for dependency updates
+- ✅ **Pre-commit hooks** for code quality
+- ✅ **Security scanning** with Bandit
 
 ---
 
-## 📄 **Licença**
+## �� **License**
 
 MIT
