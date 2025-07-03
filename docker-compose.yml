@@ -1,0 +1,31 @@
+services:
+  alert-mongo:
+    image: mongo:8
+    container_name: alert-mongo
+    restart: always
+    ports:
+      - "27843:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  alert-bot:
+    build: .
+    container_name: alert-bot
+    depends_on:
+      - alert-mongo
+    environment:
+      PYTHONUNBUFFERED: 1
+      DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+      CANAL_DE_NOTIFICACAO_ID: ${CANAL_DE_NOTIFICACAO_ID}
+      SALA_EXCLUIDA: ${SALA_EXCLUIDA}
+      MONGODB_URI: ${MONGODB_URI}
+    env_file:
+      - .env
+
+volumes:
+  mongo_data:
