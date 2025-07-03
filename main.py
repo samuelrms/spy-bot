@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
+print("🚀 Iniciando bot...")
 load_dotenv()
 
 CANAL_DE_NOTIFICACAO_ID = int(os.getenv("CANAL_DE_NOTIFICACAO_ID"))
@@ -13,7 +14,16 @@ SALA_EXCLUIDA = os.getenv("SALA_EXCLUIDA")
 
 # MongoDB Configuration
 MONGODB_URI = os.getenv("MONGODB_URI")
-client = MongoClient(MONGODB_URI, server_api=ServerApi("1"))
+print(f"Tentando conectar ao MongoDB: {MONGODB_URI}")
+client = MongoClient(MONGODB_URI)
+try:
+    # Testa a conexão
+    client.admin.command("ping")
+    print("✅ Conexão com MongoDB estabelecida com sucesso!")
+except Exception as e:
+    print(f"❌ Erro ao conectar ao MongoDB: {e}")
+    raise
+
 db = client.spy  # nome do banco
 user_data_collection = db.spy_users  # nome da collection
 
@@ -197,6 +207,7 @@ async def on_ready():
     print("--------------------------------------------------")
     print("Bot de monitoramento de status e salas de voz está online!")
     print("--------------------------------------------------")
+    print("✅ Evento on_ready executado!")
 
     # Testa conexão com MongoDB
     admin_db = MongoClient(MONGODB_URI, server_api=ServerApi("1")).get_database("admin")
@@ -215,11 +226,19 @@ async def on_ready():
 
 @client.event
 async def on_presence_update(before, after):
+    print(
+        f"[on_presence_update] {after.name} ({after.id}) mudou de status: "
+        f"{before.status} -> {after.status}"
+    )
     if after.bot:
         return
 
     if before.status != after.status:
         update_status_time(str(after.id), after.status, after.display_name)
+        print(
+            f"[on_presence_update] Dados de status atualizados no MongoDB para "
+            f"{after.name} ({after.id})"
+        )
 
         canal_de_notificacao = client.get_channel(CANAL_DE_NOTIFICACAO_ID)
 
@@ -294,6 +313,10 @@ async def on_presence_update(before, after):
 
 @client.event
 async def on_voice_state_update(member, before, after):
+    print(
+        f"[on_voice_state_update] {member.name} ({member.id}) mudou de sala de voz: "
+        f"{before.channel} -> {after.channel}"
+    )
     if member.bot:
         return
 
@@ -303,6 +326,10 @@ async def on_voice_state_update(member, before, after):
         channel_name = after.channel.name
         if channel_name != SALA_EXCLUIDA:
             update_voice_time(user_id, channel_name, True, member.display_name)
+            print(
+                f"[on_voice_state_update] {member.name} entrou na sala "
+                f"{after.channel.name}"
+            )
 
             canal_de_notificacao = client.get_channel(CANAL_DE_NOTIFICACAO_ID)
             if canal_de_notificacao:
@@ -327,6 +354,10 @@ async def on_voice_state_update(member, before, after):
         if channel_name != SALA_EXCLUIDA:
             user_data = update_voice_time(
                 user_id, channel_name, False, member.display_name
+            )
+            print(
+                f"[on_voice_state_update] {member.name} saiu da sala "
+                f"{before.channel.name}"
             )
 
             if user_data and channel_name in user_data["voice_time"]:
@@ -417,9 +448,18 @@ async def on_voice_state_update(member, before, after):
                 embed.set_footer(text="Spy Bot • Monitoramento de Voz")
                 await canal_de_notificacao.send(embed=embed)
 
+    print(
+        f"[on_voice_state_update] Dados de voz atualizados no MongoDB para "
+        f"{member.name} ({member.id})"
+    )
+
 
 @client.event
 async def on_message(message):
+    print(
+        f"[on_message] Mensagem recebida de {message.author} ({message.author.id}): "
+        f"{message.content}"
+    )
     if message.author.bot:
         return
 
