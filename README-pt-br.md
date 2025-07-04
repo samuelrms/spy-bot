@@ -43,6 +43,7 @@ Um bot de Discord para monitoramento de presença, status e salas de voz, com no
 - `!achievements` — Suas conquistas
 - `!compare @user1 @user2` — Comparar usuários
 - `!serverstats` — Estatísticas gerais do servidor
+- `!clear` — Limpa todas as mensagens do canal atual (requer permissão)
 - `!help` — Lista de comandos
 
 ### ⚠️ **Alertas e Lembretes**
@@ -206,6 +207,7 @@ ALERT_INACTIVE_DAYS=7
 ### **Comandos Básicos:**
 
 - `!stats` — Mostra suas estatísticas de tempo em status e salas de voz
+- `!clear` — Limpa todas as mensagens do canal atual (requer permissão "Gerenciar Mensagens")
 - `!help` — Lista de todos os comandos disponíveis
 
 ### **Comandos de Ranking:**
