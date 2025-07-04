@@ -13,8 +13,8 @@ def run_command(command, check=True):
     """Run a shell command and return the result"""
     try:
         result = subprocess.run(
-            command, shell=True, check=check, capture_output=True, text=True  # nosec
-        )
+            command, shell=True, check=check, capture_output=True, text=True
+        )  # nosec
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {command}")
