@@ -232,60 +232,6 @@ ALERT_INACTIVE_DAYS=7
 - `!clear` — Limpa todas as mensagens do canal atual (requer permissão "Gerenciar Mensagens")
 - `!help` — Lista de todos os comandos disponíveis
 
-### **Comandos de Silenciamento:**
-
-- `!silence` — Mostra um tutorial de como silenciar o canal manualmente pelo Discord (via DM).
-
-> O comando !silence apenas ensina como silenciar o canal manualmente. O bot não pode silenciar canais para você, pois isso é uma configuração pessoal do Discord.
-
-### **Comandos de Ranking:**
-
-- `!top` — Ranking dos 10 membros com mais tempo online
-- `!top voz` — Ranking dos 10 membros com mais tempo em salas de voz
-
-### **Comandos de Conquistas:**
-
-- `!achievements` — Mostra suas conquistas desbloqueadas
-- `!achievements @usuario` — Mostra conquistas de outro usuário
-- `!achievements-categories` — Mostra todas as categorias de conquistas e quantas existem em cada (ouse pegar todas!)
-
-#### **Categorias de Conquistas (Exemplos):**
-
-- 🎤 Voz & Presença — Para os mais sociáveis! (ficar 24h em voz?)
-- 💬 Mensagens & Reações — Para os mais ativos! (1000 mensagens em um dia?)
-- 🦋 Social & Comunidade — Para os mais populares! (ajudar 50 pessoas?)
-- 📈 Engajamento & Uso — Para os mais dedicados! (7 dias online sem parar?)
-- ⏰ Atividade & Consistência — Para os mais persistentes! (30 dias seguidos?)
-- 🎲 Diversão & Extras — Para os mais criativos! (usar todos os emojis personalizados?)
-- 🌙 Lunático do Discord — Para os mais loucos! (online de madrugada?)
-
-*Desbloqueie todas as 50 conquistas e torne-se uma lenda do Discord! Menos de 1% consegue... Será você?*
-
-### **Comandos de Comparação:**
-
-- `!compare @user1 @user2` — Compara estatísticas de dois usuários
-
-### **Comandos de Servidor:**
-
-- `!serverstats` — Estatísticas gerais do servidor
-
-### **Exemplos do Sistema de Silenciamento:**
-
-**Silenciamento Temporário:**
-
-- `!silence_2h` — Silencia notificações por 2 horas
-- `!silence_1d` — Silencia notificações por 1 dia
-- `!silence_7d` — Silencia notificações por 1 semana
-
-**Silenciamento Permanente:**
-
-- `!silence_always` — Silencia permanentemente todas as notificações do bot
-
-**Gerenciamento:**
-
-- `!silence_status` — Verifica status atual do silenciamento
-- `!silence_remove` — Remove silenciamento e retoma notificações
-
 ---
 
 ## 📦 **Dependências**
@@ -430,21 +376,6 @@ make pre-commit
 
 ### **Comandos Manuais de Desenvolvimento**
 
-#### **Pre-commit Hooks**
-
-O projeto usa pre-commit hooks para garantir qualidade do código:
-
-```bash
-# Instalar pre-commit
-pip install pre-commit
-pre-commit install
-
-# Executar manualmente
-pre-commit run --all-files
-```
-
-#### **Formatação e Linting**
-
 ```bash
 # Formatar código com Black
 black .
@@ -457,36 +388,9 @@ flake8 .
 
 # Verificação de segurança com Bandit
 bandit -r . -f json -o bandit-report.json
-```
 
-#### **Versionamento e Releases**
-
-```bash
-# Criar novo release (patch, minor, major)
+# Criar novo release
 python scripts/release.py patch
-python scripts/release.py minor
-python scripts/release.py major
-
-# Ou usar Makefile
-make release-patch
-make release-minor
-make release-major
-```
-
-### **Desenvolvimento com Docker**
-
-```bash
-# Construir a imagem Docker
-docker build -t spy-bot .
-
-# Executar com Docker Compose (inclui MongoDB)
-docker-compose up -d
-
-# Visualizar logs
-docker-compose logs -f alert-bot
-
-# Parar serviços
-docker-compose down
 ```
 
 ### **CI/CD**
@@ -503,41 +407,6 @@ docker-compose down
 
 - [MIT](./LICENSE)
 
-## 📦 **Docker**
+## 📄 **Licença**
 
-- [Docker](https://www.docker.com/) - Containerização
-- [Docker Compose](https://docs.docker.com/compose/) - Orquestração de containers
-- [Dockerfile](./Dockerfile) - Dockerfile para o bot
-- [docker-compose.yml](./docker-compose.yml) - Arquivo Docker Compose
-
----
-
-## 📦 **MongoDB**
-
-- [MongoDB](https://www.mongodb.com/) - Banco de dados
-- [MongoDB Atlas](https://www.mongodb.com/atlas) - MongoDB na nuvem
-- [MongoDB Compass](https://www.mongodb.com/products/compass) - Interface gráfica do MongoDB
-
-## 📦 **GitHub**
-
-- [GitHub](https://github.com/) - Controle de versão
-- [GitHub Actions](https://github.com/features/actions) - Workflows automatizados
-- [GitHub Dependabot](https://docs.github.com/en/code-security/dependabot) - Atualizações de dependências
-- [GitHub Pre-commit](https://pre-commit.com/) - Git hooks
-- [GitHub Docker](https://www.docker.com/) - Containerização
-- [GitHub Make](https://www.gnu.org/software/make/) - Automação de build
-
----
-
-## 📝 **Créditos**
-
-- [Discord.py](https://discordpy.readthedocs.io/) - Wrapper da API do Discord
-- [Python-dotenv](https://github.com/theskumar/python-dotenv) - Gerenciamento de variáveis de ambiente
-- [PyMongo](https://pymongo.readthedocs.io/) - Driver do MongoDB
-- [Black](https://github.com/psf/black) - Formatador de código
-- [Flake8](https://flake8.pycqa.org/) - Linter
-- [Isort](https://pycqa.github.io/isort/) - Organizador de imports
-- [Bandit](https://github.com/PyCQA/bandit) - Linter de segurança
-- [Pre-commit](https://pre-commit.com/) - Git hooks
-- [Docker](https://www.docker.com/) - Containerização
-- [Make](https://www.gnu.org/software/make/) - Automação de build
+- [MIT](./LICENSE)
