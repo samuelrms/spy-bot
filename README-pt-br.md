@@ -8,6 +8,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![Make](https://img.shields.io/badge/Makefile-Available-green.svg)](https://www.gnu.org/software/make/)
+[![wakatime](https://wakatime.com/badge/user/47ec2352-4b0b-4d3c-b270-5649937dd18b/project/c157a9c7-b539-4c0a-895b-1518dbbc2795.svg)](https://wakatime.com/badge/user/47ec2352-4b0b-4d3c-b270-5649937dd18b/project/c157a9c7-b539-4c0a-895b-1518dbbc2795)
 
 Um bot de Discord para monitoramento de presença, status e salas de voz, com notificações bonitas e estatísticas detalhadas para cada usuário!
 
