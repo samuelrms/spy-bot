@@ -1,3 +1,4 @@
+import asyncio
 import os
 from datetime import datetime, timedelta
 
@@ -986,6 +987,10 @@ async def on_message(message):
     elif content.startswith("!debug"):
         await handle_debug_command(message)
 
+    # Comando !clear
+    elif content.startswith("!clear"):
+        await handle_clear_command(message)
+
 
 async def handle_stats_command(message):
     """Manipula o comando !stats"""
@@ -1383,6 +1388,7 @@ async def handle_help_command(message):
     basic_commands = [
         ("!stats", "📊 Mostra suas estatísticas pessoais detalhadas"),
         ("!help", "❓ Mostra esta lista de comandos"),
+        ("!clear", "🧹 Limpa todas as mensagens do canal atual (requer permissão)"),
     ]
 
     embed.add_field(
@@ -1453,6 +1459,103 @@ async def handle_help_command(message):
         )
     )
     await message.channel.send(embed=embed)
+
+
+async def handle_clear_command(message):
+    """Manipula o comando !clear - limpa todas as mensagens do canal"""
+    # Verifica se o usuário tem permissão para gerenciar mensagens
+    if not message.author.guild_permissions.manage_messages:
+        embed = discord.Embed(
+            title="❌ Permissão Negada",
+            description=(
+                "Você precisa ter a permissão 'Gerenciar Mensagens' para usar "
+                "este comando."
+            ),
+            color=0xFF0000,
+            timestamp=datetime.now(),
+        )
+        embed.set_author(
+            name=message.author.display_name,
+            icon_url=message.author.display_avatar.url,
+        )
+        embed.set_footer(text="Spy Bot • Comando Clear")
+        await message.channel.send(embed=embed)
+        return
+
+    try:
+        # Envia mensagem de confirmação
+        embed = discord.Embed(
+            title="🧹 Limpando Canal",
+            description="Iniciando limpeza de todas as mensagens...",
+            color=0x00FF00,
+            timestamp=datetime.now(),
+        )
+        embed.set_author(
+            name=message.author.display_name,
+            icon_url=message.author.display_avatar.url,
+        )
+        embed.set_footer(text="Spy Bot • Comando Clear")
+        await message.channel.send(embed=embed)
+
+        # Conta mensagens para deletar
+        deleted_count = 0
+
+        # Deleta mensagens em lotes (limite da API do Discord é 100 por vez)
+        async for msg in message.channel.history(limit=None):
+            try:
+                await msg.delete()
+                deleted_count += 1
+            except discord.Forbidden:
+                # Se não conseguir deletar alguma mensagem, continua
+                continue
+            except discord.HTTPException:
+                # Se houver erro de rate limit, continua
+                continue
+
+        # Envia mensagem de sucesso
+        success_embed = discord.Embed(
+            title="✅ Canal Limpo",
+            description=(
+                f"**{deleted_count}** mensagens foram removidas do canal.\n\n"
+                "⏰ Esta mensagem será removida em 30 segundos e o comando de "
+                "ajuda será exibido."
+            ),
+            color=0x00FF00,
+            timestamp=datetime.now(),
+        )
+        success_embed.set_author(
+            name=message.author.display_name,
+            icon_url=message.author.display_avatar.url,
+        )
+        success_embed.set_footer(text="Spy Bot • Comando Clear")
+        success_msg = await message.channel.send(embed=success_embed)
+
+        # Aguarda 30 segundos
+        await asyncio.sleep(30)
+
+        # Deleta a mensagem de sucesso
+        try:
+            await success_msg.delete()
+        except discord.HTTPException:
+            # Se não conseguir deletar, continua mesmo assim
+            pass
+
+        # Exibe o comando de ajuda
+        await handle_help_command(message)
+
+    except Exception as e:
+        error_embed = discord.Embed(
+            title="❌ Erro ao Limpar Canal",
+            description=f"Ocorreu um erro durante a limpeza: {str(e)}",
+            color=0xFF0000,
+            timestamp=datetime.now(),
+        )
+        error_embed.set_author(
+            name=message.author.display_name,
+            icon_url=message.author.display_avatar.url,
+        )
+        error_embed.set_footer(text="Spy Bot • Comando Clear")
+        await message.channel.send(embed=error_embed)
 
 
 async def handle_debug_command(message):
