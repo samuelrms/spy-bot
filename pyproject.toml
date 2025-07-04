@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spy-bot"
-version = "1.2.0"
+version = "1.2.1"
 description = "Um bot de Discord para monitoramento de presença, status e salas de voz"
 readme = "README.md"
 license = {text = "MIT"}
