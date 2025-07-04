@@ -44,6 +44,7 @@ Um bot de Discord para monitoramento de presença, status e salas de voz, com no
 - `!compare @user1 @user2` — Comparar usuários
 - `!serverstats` — Estatísticas gerais do servidor
 - `!clear` — Limpa todas as mensagens do canal atual (requer permissão)
+- `!silence` — Mostra um tutorial de como silenciar o canal manualmente pelo Discord (via DM)
 - `!help` — Lista de comandos
 
 ### ⚠️ **Alertas e Lembretes**
@@ -52,6 +53,13 @@ Um bot de Discord para monitoramento de presença, status e salas de voz, com no
 - **Notificações automáticas** de usuários inativos
 - **Configuração flexível** de dias para alertas
 
+### 🔇 **Sistema de Silenciamento**
+
+- **Controle de notificações** - Usuários podem silenciar notificações do bot
+- **Duração flexível** - Silenciamento temporário (horas/dias) ou permanente
+- **Expiração automática** - Silenciamentos temporários expiram automaticamente
+- **Acesso baseado em permissões** - Requer permissão "Gerenciar Mensagens"
+
 ### 📈 **Relatórios Automáticos**
 
 - **Relatórios semanais** com estatísticas gerais
@@ -59,6 +67,19 @@ Um bot de Discord para monitoramento de presença, status e salas de voz, com no
 - **Taxa de atividade** do servidor
 - **Conquistas concedidas** no período
 - **Agendamento automático** (domingo às 20h)
+
+### 💤 **Modo Sleep (Silencioso)**
+
+- `!sleep` — Coloca o bot para dormir até receber `!wake`.
+- `!sleep 30m` / `!sleep 2h` / `!sleep 1d` — Bot dorme pelo tempo especificado (minutos, horas, dias).
+- `!wake` — Acorda o bot imediatamente.
+- `!status-sleep` — Mostra o status atual do modo sleep.
+
+**Enquanto dormindo:**
+
+- O bot **continua coletando todas as métricas normalmente** (presença, voz, mensagens, conquistas, etc).
+- O bot **não envia mensagens automáticas** (relatórios, alertas, conquistas desbloqueadas, etc).
+- O bot **responde normalmente aos comandos**.
 
 ---
 
@@ -210,6 +231,12 @@ ALERT_INACTIVE_DAYS=7
 - `!clear` — Limpa todas as mensagens do canal atual (requer permissão "Gerenciar Mensagens")
 - `!help` — Lista de todos os comandos disponíveis
 
+### **Comandos de Silenciamento:**
+
+- `!silence` — Mostra um tutorial de como silenciar o canal manualmente pelo Discord (via DM).
+
+> O comando !silence apenas ensina como silenciar o canal manualmente. O bot não pode silenciar canais para você, pois isso é uma configuração pessoal do Discord.
+
 ### **Comandos de Ranking:**
 
 - `!top` — Ranking dos 10 membros com mais tempo online
@@ -219,6 +246,19 @@ ALERT_INACTIVE_DAYS=7
 
 - `!achievements` — Mostra suas conquistas desbloqueadas
 - `!achievements @usuario` — Mostra conquistas de outro usuário
+- `!achievements-categories` — Mostra todas as categorias de conquistas e quantas existem em cada (ouse pegar todas!)
+
+#### **Categorias de Conquistas (Exemplos):**
+
+- 🎤 Voz & Presença — Para os mais sociáveis! (ficar 24h em voz?)
+- 💬 Mensagens & Reações — Para os mais ativos! (1000 mensagens em um dia?)
+- 🦋 Social & Comunidade — Para os mais populares! (ajudar 50 pessoas?)
+- 📈 Engajamento & Uso — Para os mais dedicados! (7 dias online sem parar?)
+- ⏰ Atividade & Consistência — Para os mais persistentes! (30 dias seguidos?)
+- 🎲 Diversão & Extras — Para os mais criativos! (usar todos os emojis personalizados?)
+- 🌙 Lunático do Discord — Para os mais loucos! (online de madrugada?)
+
+*Desbloqueie todas as 50 conquistas e torne-se uma lenda do Discord! Menos de 1% consegue... Será você?*
 
 ### **Comandos de Comparação:**
 
@@ -227,6 +267,23 @@ ALERT_INACTIVE_DAYS=7
 ### **Comandos de Servidor:**
 
 - `!serverstats` — Estatísticas gerais do servidor
+
+### **Exemplos do Sistema de Silenciamento:**
+
+**Silenciamento Temporário:**
+
+- `!silence_2h` — Silencia notificações por 2 horas
+- `!silence_1d` — Silencia notificações por 1 dia
+- `!silence_7d` — Silencia notificações por 1 semana
+
+**Silenciamento Permanente:**
+
+- `!silence_always` — Silencia permanentemente todas as notificações do bot
+
+**Gerenciamento:**
+
+- `!silence_status` — Verifica status atual do silenciamento
+- `!silence_remove` — Remove silenciamento e retoma notificações
 
 ---
 
