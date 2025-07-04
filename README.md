@@ -46,6 +46,7 @@ A Discord bot for monitoring presence, status, and voice channels with beautiful
 - `!compare @user1 @user2` — Compare users
 - `!serverstats` — General server statistics
 - `!clear` — Clear all messages from the current channel (requires permission)
+- `!silence` — Shows a tutorial on how to mute the channel manually in Discord (via DM)
 - `!help` — List of commands
 
 ### ⚠️ **Alerts and Reminders**
@@ -54,6 +55,13 @@ A Discord bot for monitoring presence, status, and voice channels with beautiful
 - **Automatic notifications** for inactive users
 - **Flexible configuration** of days for alerts
 
+### 🔇 **Silence System**
+
+- **User-controlled notifications** - Users can silence bot notifications
+- **Flexible duration** - Temporary (hours/days) or permanent silence
+- **Automatic expiration** - Temporary silences expire automatically
+- **Permission-based access** - Requires "Manage Messages" permission
+
 ### 📈 **Automatic Reports**
 
 - **Weekly reports** with general statistics
@@ -61,6 +69,73 @@ A Discord bot for monitoring presence, status, and voice channels with beautiful
 - **Server activity rate**
 - **Achievements granted** in the period
 - **Automatic scheduling** (Sunday at 8 PM)
+
+### 💤 **Sleep Mode**
+
+- `!sleep` — Puts the bot to sleep until it receives `!wake`.
+- `!sleep 30m` / `!sleep 2h` / `!sleep 1d` — Bot sleeps for the specified time (minutes, hours, days).
+- `!wake` — Wakes the bot up immediately.
+- `!status-sleep` — Shows the current sleep mode status.
+
+**While sleeping:**
+
+- The bot **continues collecting all metrics normally** (presence, voice, messages, achievements, etc).
+- The bot **does not send automatic messages** (reports, alerts, unlocked achievements, etc).
+- The bot **still responds to commands**.
+
+### **Silence Commands:**
+
+- `!silence` — Shows a tutorial on how to mute the channel manually in Discord (via DM).
+
+> The !silence command only teaches you how to mute the channel manually. The bot cannot mute channels for you, as this is a personal Discord setting.
+
+### **Ranking Commands:**
+
+- `!top` — Ranking of the 10 members with the most online time
+- `!top voice` — Ranking of the 10 members with the most time in voice channels
+
+### **Achievement Commands:**
+
+- `!achievements` — Shows your unlocked achievements
+- `!achievements @user` — Shows achievements of another user
+- `!achievements-categories` — Shows all achievement categories and how many there are in each (dare to collect them all!)
+
+#### **Achievement Categories (Examples):**
+
+- 🎤 Voice & Presence — For the most sociable! (e.g., stay 24h in voice?)
+- 💬 Messages & Reactions — For the most active! (1000 messages in a day?)
+- 🦋 Social & Community — For the most popular! (help 50 people?)
+- 📈 Engagement & Usage — For the most dedicated! (7 days online without a break?)
+- ⏰ Activity & Consistency — For the most persistent! (30 days in a row?)
+- 🎲 Fun & Extras — For the most creative! (use all custom emojis?)
+- 🌙 Discord Lunatic — For the craziest! (online at dawn?)
+
+*Unlock all 50 achievements and become a Discord legend! Less than 1% can do it... Will you?*
+
+### **Comparison Commands:**
+
+- `!compare @user1 @user2` — Compares statistics of two users
+
+### **Server Commands:**
+
+- `!serverstats` — General server statistics
+
+### **Silence System Examples:**
+
+**Temporary Silence:**
+
+- `!silence_2h` — Silence notifications for 2 hours
+- `!silence_1d` — Silence notifications for 1 day
+- `!silence_7d` — Silence notifications for 1 week
+
+**Permanent Silence:**
+
+- `!silence_always` — Permanently silence all bot notifications
+
+**Management:**
+
+- `!silence_status` — Check current silence status
+- `!silence_remove` — Remove silence and resume notifications
 
 ---
 
@@ -212,6 +287,12 @@ ALERT_INACTIVE_DAYS=7
 - `!clear` — Clear all messages from the current channel (requires "Manage Messages" permission)
 - `!help` — List of all available commands
 
+### **Silence Commands:**
+
+- `!silence` — Shows a tutorial on how to mute the channel manually in Discord (via DM).
+
+> The !silence command only teaches you how to mute the channel manually. The bot cannot mute channels for you, as this is a personal Discord setting.
+
 ### **Ranking Commands:**
 
 - `!top` — Ranking of the 10 members with the most online time
@@ -221,6 +302,19 @@ ALERT_INACTIVE_DAYS=7
 
 - `!achievements` — Shows your unlocked achievements
 - `!achievements @user` — Shows achievements of another user
+- `!achievements-categories` — Shows all achievement categories and how many there are in each (dare to collect them all!)
+
+#### **Achievement Categories (Examples):**
+
+- 🎤 Voice & Presence — For the most sociable! (e.g., stay 24h in voice?)
+- 💬 Messages & Reactions — For the most active! (1000 messages in a day?)
+- 🦋 Social & Community — For the most popular! (help 50 people?)
+- 📈 Engagement & Usage — For the most dedicated! (7 days online without a break?)
+- ⏰ Activity & Consistency — For the most persistent! (30 days in a row?)
+- 🎲 Fun & Extras — For the most creative! (use all custom emojis?)
+- 🌙 Discord Lunatic — For the craziest! (online at dawn?)
+
+*Unlock all 50 achievements and become a Discord legend! Less than 1% can do it... Will you?*
 
 ### **Comparison Commands:**
 
@@ -229,6 +323,36 @@ ALERT_INACTIVE_DAYS=7
 ### **Server Commands:**
 
 - `!serverstats` — General server statistics
+
+### **Silence System Examples:**
+
+**Temporary Silence:**
+
+- `!silence_2h` — Silence notifications for 2 hours
+- `!silence_1d` — Silence notifications for 1 day
+- `!silence_7d` — Silence notifications for 1 week
+
+**Permanent Silence:**
+
+- `!silence_always` — Permanently silence all bot notifications
+
+**Management:**
+
+- `!silence_status` — Check current silence status
+- `!silence_remove` — Remove silence and resume notifications
+
+### **Modo Sleep Commands:**
+
+- `!sleep` — Coloca o bot para dormir até receber `!wake`.
+- `!sleep 30m` / `!sleep 2h` / `!sleep 1d` — Bot dorme pelo tempo especificado (minutos, horas, dias).
+- `!wake` — Acorda o bot imediatamente.
+- `!status-sleep` — Mostra o status atual do modo sleep.
+
+**Enquanto dormindo:**
+
+- O bot **continua coletando todas as métricas normalmente** (presença, voz, mensagens, conquistas, etc).
+- O bot **não envia mensagens automáticas** (relatórios, alertas, conquistas desbloqueadas, etc).
+- O bot **responde normalmente aos comandos**.
 
 ---
 
@@ -328,160 +452,4 @@ If you get the error `export: not an identifier` when loading `.env`, it's becau
 
 ### **Reports are not sent:**
 
-- Check if `CANAL_RELATORIOS_ID` is configured correctly
-- Confirm that the bot has permission to send messages in the channel
-
-### **Docker issues:**
-
-- **MongoDB connection failed:** Check if MongoDB container is running with `docker-compose ps`
-- **Bot not starting:** Check logs with `docker-compose logs alert-bot`
-- **Environment variables not loaded:** Ensure `.env` file exists and has correct format
-- **Port conflicts:** Change MongoDB port in `docker-compose.yml` if 27843 is already in use
-
----
-
-## 👨‍💻 **Contribution**
-
-Pull requests are welcome! Feel free to suggest improvements or report bugs.
-
----
-
-## 🛠️ **Development**
-
-### **Quick Start with Makefile**
-
-The project includes a Makefile for common development tasks:
-
-```bash
-# Show all available commands
-make help
-
-# Initial setup for development
-make setup
-
-# Run all checks (format, lint, test)
-make check
-
-# Format code
-make format
-
-# Run linting
-make lint
-
-# Run pre-commit hooks
-make pre-commit
-```
-
-### **Manual Development Commands**
-
-#### **Pre-commit Hooks**
-
-The project uses pre-commit hooks to ensure code quality:
-
-```bash
-# Install pre-commit
-pip install pre-commit
-pre-commit install
-
-# Run manually
-pre-commit run --all-files
-```
-
-#### **Formatting and Linting**
-
-```bash
-# Format code with Black
-black .
-
-# Organize imports with isort
-isort .
-
-# Check with flake8
-flake8 .
-
-# Security scanning with Bandit
-bandit -r . -f json -o bandit-report.json
-```
-
-#### **Versioning and Releases**
-
-```bash
-# Create new release (patch, minor, major)
-python scripts/release.py patch
-python scripts/release.py minor
-python scripts/release.py major
-
-# Or use Makefile
-make release-patch
-make release-minor
-make release-major
-```
-
-### **Docker Development**
-
-```bash
-# Build the Docker image
-docker build -t spy-bot .
-
-# Run with Docker Compose (includes MongoDB)
-docker-compose up -d
-
-# View logs
-docker-compose logs -f alert-bot
-
-# Stop services
-docker-compose down
-```
-
-### **CI/CD**
-
-- ✅ **GitHub Actions** for automated testing
-- ✅ **Dependabot** for dependency updates
-- ✅ **Pre-commit hooks** for code quality
-- ✅ **Security scanning** with Bandit
-- ✅ **Docker support** for easy deployment
-
----
-
-## 📄 **License**
-
-- [MIT](./LICENSE)
-
-## 📦 **Docker**
-
-- [Docker](https://www.docker.com/) - Containerization
-- [Docker Compose](https://docs.docker.com/compose/) - Container orchestration
-- [Dockerfile](./Dockerfile) - Dockerfile for the bot
-- [docker-compose.yml](./docker-compose.yml) - Docker Compose file
-
----
-
-## 📦 **MongoDB**
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [MongoDB Atlas](https://www.mongodb.com/atlas) - Cloud MongoDB
-- [MongoDB Compass](https://www.mongodb.com/products/compass) - MongoDB GUI
-
-## 📦 **GitHub**
-
-- [GitHub](https://github.com/) - Version control
-- [GitHub Actions](https://github.com/features/actions) - Automated workflows
-- [GitHub Dependabot](https://docs.github.com/en/code-security/dependabot) - Dependency updates
-- [GitHub Pre-commit](https://pre-commit.com/) - Git hooks
-- [GitHub Docker](https://www.docker.com/) - Containerization
-- [GitHub Make](https://www.gnu.org/software/make/) - Build automation
-
----
-
-## 📝 **Credits**
-
-- [Discord.py](https://discordpy.readthedocs.io/) - Discord API wrapper
-- [Python-dotenv](https://github.com/theskumar/python-dotenv) - Environment variable management
-- [PyMongo](https://pymongo.readthedocs.io/) - MongoDB driver
-- [Black](https://github.com/psf/black) - Code formatter
-- [Flake8](https://flake8.pycqa.org/) - Linter
-- [Isort](https://pycqa.github.io/isort/) - Import sorter
-- [Bandit](https://github.com/PyCQA/bandit) - Security linter
-- [Pre-commit](https://pre-commit.com/) - Git hooks
-- [Docker](https://www.docker.com/) - Containerization
-- [Make](https://www.gnu.org/software/make/) - Build automation
+- Check if `
