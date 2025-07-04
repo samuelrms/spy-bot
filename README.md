@@ -45,6 +45,7 @@ A Discord bot for monitoring presence, status, and voice channels with beautiful
 - `!achievements` — Your achievements
 - `!compare @user1 @user2` — Compare users
 - `!serverstats` — General server statistics
+- `!clear` — Clear all messages from the current channel (requires permission)
 - `!help` — List of commands
 
 ### ⚠️ **Alerts and Reminders**
@@ -208,6 +209,7 @@ ALERT_INACTIVE_DAYS=7
 ### **Basic Commands:**
 
 - `!stats` — Shows your statistics of time in status and voice channels
+- `!clear` — Clear all messages from the current channel (requires "Manage Messages" permission)
 - `!help` — List of all available commands
 
 ### **Ranking Commands:**
