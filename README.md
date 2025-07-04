@@ -133,7 +133,7 @@ A Discord bot for monitoring presence, status, and voice channels with beautiful
 
 - `!silence_always` — Permanently silence all bot notifications
 
-**Management:**
+### **Management:**
 
 - `!silence_status` — Check current silence status
 - `!silence_remove` — Remove silence and resume notifications
@@ -337,25 +337,10 @@ ALERT_INACTIVE_DAYS=7
 
 - `!silence_always` — Permanently silence all bot notifications
 
-**Management:**
+### **Management:**
 
 - `!silence_status` — Check current silence status
 - `!silence_remove` — Remove silence and resume notifications
-
-### **Modo Sleep Commands:**
-
-- `!sleep` — Coloca o bot para dormir até receber `!wake`.
-- `!sleep 30m` / `!sleep 2h` / `!sleep 1d` — Bot dorme pelo tempo especificado (minutos, horas, dias).
-- `!wake` — Acorda o bot imediatamente.
-- `!status-sleep` — Mostra o status atual do modo sleep.
-
-**Enquanto dormindo:**
-
-- O bot **continua coletando todas as métricas normalmente** (presença, voz, mensagens, conquistas, etc).
-- O bot **não envia mensagens automáticas** (relatórios, alertas, conquistas desbloqueadas, etc).
-- O bot **responde normalmente aos comandos**.
-
----
 
 ## 📦 **Dependencies**
 
@@ -453,4 +438,18 @@ If you get the error `export: not an identifier` when loading `.env`, it's becau
 
 ### **Reports are not sent:**
 
-- Check if `
+- Check if `CANAL_RELATORIOS_ID` is configured correctly
+- Confirm that the bot has permission to send messages in the channel
+
+### **Docker issues:**
+
+- **MongoDB connection failure:** Check if the MongoDB container is running with `docker-compose ps`
+- **Bot doesn't start:** Check logs with `docker-compose logs alert-bot`
+- **Environment variables not loaded:** Make sure the `.env` file exists and has correct format
+- **Port conflicts:** Change MongoDB port in `docker-compose.yml` if 27843 is already in use
+
+---
+
+## 📄 **License**
+
+- [MIT](./LICENSE)
